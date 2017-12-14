@@ -8,21 +8,3 @@ module Rulers
       .downcase
   end
 end
-
-var res = [];
-json.forEach(function(j){
-  var coords = polyline.decode(j.p),
-      final = [];
-
-  coords.forEach(function(coord){
-    final.push({
-      lat: function() {return coord[0];},
-      lng: function() { return coord[1];}
-     });
-  })
-  res.push({
-    name: j.name,
-    city: j.city,
-    "area(square meters)": geom.computeArea(final)
-  });
-})
